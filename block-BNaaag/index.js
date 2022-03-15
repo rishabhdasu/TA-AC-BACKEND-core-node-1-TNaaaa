@@ -1,19 +1,12 @@
-var path = require("path");
-var os = require("os");
+var { readFile, readFileSync } = require("fs");
 
-var filePath = path.join(__dirname, "content.md");
-console.log(filePath);
+readFile("./content.md", `utf8`, (err, content) => {
+  console.log(content);
+});
 
-function sum(a, b) {
-  return a + b;
-}
-console.log(sum(10, 20));
+var result = readFileSync("./content.md", `utf8`);
 
-console.log("first");
-function sum1(a, b) {
-  setTimeout(() => {
-    console.log("second");
-  }, 2000);
-  return a + b;
-}
-console.log(sum1(10, 20));
+var buff1 = Buffer.alloc(10);
+
+buff1.write("Welcome World");
+console.log(buff1.toString());
