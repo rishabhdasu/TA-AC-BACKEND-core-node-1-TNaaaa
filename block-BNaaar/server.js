@@ -19,5 +19,5 @@ function handleReq(req, res) {
 }
 
 server.listen(5000, () => {
-  console.log("Server started at 5K");
+  console.log("Server has started at 5K");
 });
