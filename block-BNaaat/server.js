@@ -4,15 +4,15 @@ var fs = require("fs");
 var server = http.createServer(handle);
 
 function handle(req, res) {
-  if (req.method === "GET" && req.url === "/node") {
-    res.setHeader("Content-Type", "text/html");
-    fs.readFile("./node", (err, content) => {
+  if (req.method === "GET" && req.url === "/file") {
+    fs.readFile("./node.html", (err, content) => {
       if (err) console.log(err);
+      res.setHeader("Content-Type", "text/html");
       res.end(content);
     });
-  } else if (req.method === "GET" && req.url === "/node") {
+  } else if (req.method === "GET" && req.url === "/stream") {
     res.setHeader("Content-Type", "text/html");
-    fs.createReadStream("./node").pipe(res);
+    fs.createReadStream("./node.html").pipe(res);
   }
 }
 
